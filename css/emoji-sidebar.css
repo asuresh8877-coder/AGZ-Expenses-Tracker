@@ -1,0 +1,51 @@
+/* Emoji Sidebar Styles */
+
+.logo-emoji {
+    font-size: 2.5rem;
+    display: inline-block;
+    animation: float 3s ease-in-out infinite, spin 4s linear infinite;
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.4));
+}
+
+.nav-emoji {
+    font-size: 1.7rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border-radius: 12px;
+    transition: all 0.25s ease;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.12));
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.nav-item:hover .nav-emoji {
+    background: rgba(255, 255, 255, 0.06); /* subtle transparent white */
+    transform: scale(1.1) rotate(3deg);
+}
+
+.nav-item.active .nav-emoji {
+    background: rgba(255, 255, 255, 0.1); /* gentle tint for active */
+    transform: scale(1.14);
+    animation: bounce 0.6s ease;
+}
+
+/* Enhanced animations */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: scale(1.2); }
+    50% { transform: scale(1.4); }
+}
+
+/* Hide old font-awesome icons */
+.nav-item i,
+.logo i {
+    display: none !important;
+}

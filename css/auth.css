@@ -1,0 +1,808 @@
+/* Authentication Styles */
+
+.auth-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    padding: 20px;
+}
+
+.auth-container {
+    max-width: 450px;
+    width: 100%;
+}
+
+.auth-avatar {
+    text-align: center;
+    margin-bottom: 30px;
+    animation: fadeInDown 0.8s ease;
+}
+
+.avatar-character {
+    width: 180px;
+    height: 220px;
+    margin: 0 auto 20px;
+    position: relative;
+    animation: bounce 2s ease-in-out infinite;
+}
+
+.avatar-head {
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(ellipse at 40% 35%, #e6b88a 0%, #d4a574 30%, #c89968 60%, #b88c5c 100%);
+    border-radius: 50% 50% 48% 52%;
+    position: relative;
+    margin: 0 auto;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25), inset -3px -3px 8px rgba(139, 97, 66, 0.3), inset 3px 3px 8px rgba(255, 255, 255, 0.15);
+    overflow: visible;
+    z-index: 2;
+}
+
+.avatar-hair {
+    width: 130px;
+    height: 60px;
+    background: linear-gradient(180deg, #0f0f0f 0%, #141414 50%, rgba(0, 0, 0, 0.9) 80%, rgba(0, 0, 0, 0.75) 100%);
+    border-radius: 65px 65px 0 0;
+    position: absolute;
+    top: -22px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5), inset 0 2px 4px rgba(255, 255, 255, 0.05);
+    z-index: 1;
+}
+
+/* Center hair partition */
+.avatar-hair::before {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 34px;
+    background: linear-gradient(180deg, rgba(0,0,0,0.7) 0%, rgba(50,50,50,0.25) 100%);
+    top: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Hair braid - right side */
+.avatar-hair::after {
+    content: '';
+    position: absolute;
+    width: 22px;
+    height: 95px;
+    background: linear-gradient(180deg, #0d0d0d 0%, #1a1a1a 30%, #0a0a0a 60%, #000000 100%);
+    border-radius: 12px;
+    top: 55px;
+    right: -2px;
+    box-shadow: inset -2px 0 5px rgba(0, 0, 0, 0.6), 3px 3px 10px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(139, 69, 19, 0.2);
+    z-index: 0;
+}
+
+/* Maang tikka (forehead jewelry chain) */
+.avatar-head::before {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 28px;
+    background: linear-gradient(180deg, #ffd700 0%, #daa520 100%);
+    top: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 0 4px rgba(255, 215, 0, 0.6);
+    z-index: 10;
+}
+
+/* Bindi with maang tikka pendant */
+.avatar-head::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: radial-gradient(circle at 35% 35%, #ff1744 0%, #dc143c 40%, #c41230 70%, #8b0000 100%);
+    border-radius: 50%;
+    top: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4), inset 1px 1px 2px rgba(255, 255, 255, 0.5), 0 0 8px rgba(220, 20, 60, 0.4);
+    border: 1px solid rgba(139, 0, 0, 0.3);
+    z-index: 10;
+}
+
+/* Maang tikka top pendant */
+.avatar-character::before {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: radial-gradient(circle at 35% 35%, #ffd700 0%, #ffed4e 40%, #daa520 100%);
+    border-radius: 50%;
+    top: 34px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), inset 1px 1px 2px rgba(255, 255, 255, 0.6), 0 0 6px rgba(255, 215, 0, 0.5);
+    border: 1px solid #b8860b;
+    z-index: 11;
+}
+
+/* Remove stray text/emoji to keep face clean */
+.avatar-character::after {
+    content: '';
+}
+
+.avatar-face {
+    position: absolute;
+    top: 58%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+    width: 90px;
+}
+
+/* Left eyebrow */
+.avatar-face::before {
+    content: '';
+    position: absolute;
+    width: 22px;
+    height: 4px;
+    background: linear-gradient(90deg, transparent 0%, #2c1810 20%, #1a1008 50%, #2c1810 80%, transparent 100%);
+    border-radius: 60% 60% 50% 50%;
+    top: -6px;
+    left: 12px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Right eyebrow */
+.avatar-face::after {
+    content: '';
+    position: absolute;
+    width: 22px;
+    height: 4px;
+    background: linear-gradient(90deg, transparent 0%, #2c1810 20%, #1a1008 50%, #2c1810 80%, transparent 100%);
+    border-radius: 60% 60% 50% 50%;
+    top: -6px;
+    right: 12px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.avatar-eyes {
+    display: flex;
+    gap: 28px;
+    margin-bottom: 14px;
+    justify-content: center;
+    animation: blink 4s ease-in-out infinite;
+}
+
+.avatar-eye {
+    width: 12px;
+    height: 12px;
+    background: radial-gradient(circle at 35% 35%, #4a3426 0%, #3d2817 30%, #2c1f15 60%, #1a1208 100%);
+    border-radius: 50%;
+    position: relative;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(0, 0, 0, 0.3);
+}
+
+/* Eye shine/highlight */
+.avatar-eye::after {
+    content: '';
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: radial-gradient(circle, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.5) 60%, transparent 100%);
+    border-radius: 50%;
+    top: 2px;
+    left: 4px;
+}
+
+/* Upper eyelashes */
+.avatar-eye::before {
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 7px;
+    border-top: 2.5px solid rgba(26, 18, 8, 0.7);
+    border-radius: 50% 50% 0 0;
+    top: -4px;
+    left: -1px;
+}
+
+/* Nose */
+.avatar-eyes::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 12px;
+    background: linear-gradient(135deg, transparent 30%, rgba(180, 120, 80, 0.15) 50%, rgba(160, 100, 70, 0.25) 100%);
+    border-radius: 40% 60% 50% 50%;
+    bottom: -16px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 1px 1px 2px rgba(139, 97, 66, 0.15);
+}
+
+.avatar-smile {
+    width: 38px;
+    height: 18px;
+    border: 3px solid #c97064;
+    border-top: none;
+    border-radius: 0 0 38px 38px;
+    margin: 0 auto;
+    animation: smile 3s ease-in-out infinite;
+    position: relative;
+    background: linear-gradient(180deg, transparent 0%, rgba(255, 182, 193, 0.2) 100%);
+}
+
+/* Lips highlight */
+.avatar-smile::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 6px;
+    background: linear-gradient(180deg, rgba(220, 20, 60, 0.25) 0%, rgba(255, 182, 193, 0.15) 100%);
+    border-radius: 0 0 38px 38px;
+    bottom: 0;
+    left: 0;
+}
+
+/* Lips shine */
+.avatar-smile::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    bottom: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Left earring */
+.avatar-body::before {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 20px;
+    background: radial-gradient(ellipse at 35% 30%, #ffd700 0%, #ffed4e 25%, #f4d03f 50%, #daa520 75%, #b8860b 100%);
+    border-radius: 50%;
+    left: -80px;
+    top: -65px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.5), inset 1px 1px 3px rgba(255, 255, 255, 0.7), 0 0 8px rgba(255, 215, 0, 0.4);
+    border: 1.5px solid #b8860b;
+    z-index: 4;
+}
+
+/* Right earring */
+.avatar-body::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 20px;
+    background: radial-gradient(ellipse at 35% 30%, #ffd700 0%, #ffed4e 25%, #f4d03f 50%, #daa520 75%, #b8860b 100%);
+    border-radius: 50%;
+    right: -80px;
+    top: -65px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.5), inset 1px 1px 3px rgba(255, 255, 255, 0.7), 0 0 8px rgba(255, 215, 0, 0.4);
+    border: 1.5px solid #b8860b;
+    z-index: 4;
+}
+
+.avatar-body {
+    width: 100px;
+    height: 85px;
+    background: linear-gradient(140deg, 
+        #dc143c 0%, #c41230 25%, #b91027 35%, 
+        #8b0000 48%, 
+        #ffd700 48%, #ffed4e 58%, #f4d03f 68%, #daa520 100%);
+    border-radius: 50px 50px 8px 8px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35), inset 0 2px 4px rgba(255, 255, 255, 0.1);
+    z-index: 1;
+}
+
+/* Namaste hands - Traditional prayer pose position */
+.avatar-hands {
+    position: absolute;
+    width: 50px;
+    height: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 98px;
+    z-index: 10;
+}
+
+/* Left hand - Traditional Namaste position */
+.avatar-hands::before {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 65px;
+    left: 0px;
+    top: 0;
+    background: 
+        linear-gradient(180deg, 
+            /* Fingertips - pointed top */
+            #e6b88a 0%, #d9a979 15%,
+            /* Middle section - fingers defined */
+            #e6b88a 15%, #d9a979 35%,
+            /* Palm area - wider */
+            #f1c49c 35%, #e6b88a 55%,
+            /* Wrist with bangles */
+            #d9a979 55%, #c89968 65%,
+            /* Red bangle */
+            #dc143c 65%, #b91027 68%,
+            /* Orange bangle */
+            #ff6347 68%, #ff4500 71%,
+            /* Gold bangle */
+            #ffd700 71%, #daa520 74%,
+            /* Wrist continuation */
+            #c89968 74%, #b38757 100%
+        );
+    border-radius: 40% 40% 10% 10% / 50% 50% 20% 20%;
+    transform: rotate(8deg);
+    box-shadow: 
+        /* Main hand shadow */
+        -2px 4px 12px rgba(0,0,0,0.4),
+        /* Finger separations - vertical lines */
+        inset 4px 8px 2px -1px rgba(139, 97, 66, 0.3),
+        inset 8px 8px 2px -1px rgba(139, 97, 66, 0.3),
+        inset 12px 8px 2px -1px rgba(139, 97, 66, 0.3),
+        inset 16px 8px 2px -1px rgba(139, 97, 66, 0.3),
+        /* Thumb separation */
+        inset -3px 15px 4px -2px rgba(139, 97, 66, 0.4),
+        /* Highlight on knuckles */
+        inset -2px 28px 3px -2px rgba(255, 255, 255, 0.2);
+    clip-path: polygon(
+        40% 0%, 45% 2%, 50% 0%, 55% 2%, 60% 0%,  /* Fingertips pointed */
+        65% 5%, 70% 15%, 75% 25%,  /* Right side curve */
+        80% 35%, 85% 50%,  /* Palm right */
+        85% 65%, 82% 70%,  /* Bangles area */
+        50% 100%, 18% 70%,  /* Wrist and left bangles */
+        15% 65%, 15% 50%,  /* Palm left */
+        20% 35%, 25% 25%,  /* Left side curve */
+        30% 15%, 35% 5%  /* Back to fingertips */
+    );
+}
+
+/* Right hand - Traditional Namaste position (mirror) */
+.avatar-hands::after {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 65px;
+    right: 0px;
+    top: 0;
+    background: 
+        linear-gradient(180deg, 
+            /* Fingertips - pointed top */
+            #e6b88a 0%, #d9a979 15%,
+            /* Middle section - fingers defined */
+            #e6b88a 15%, #d9a979 35%,
+            /* Palm area - wider */
+            #f1c49c 35%, #e6b88a 55%,
+            /* Wrist with bangles */
+            #d9a979 55%, #c89968 65%,
+            /* Red bangle */
+            #dc143c 65%, #b91027 68%,
+            /* Orange bangle */
+            #ff6347 68%, #ff4500 71%,
+            /* Gold bangle */
+            #ffd700 71%, #daa520 74%,
+            /* Wrist continuation */
+            #c89968 74%, #b38757 100%
+        );
+    border-radius: 40% 40% 10% 10% / 50% 50% 20% 20%;
+    transform: rotate(-8deg);
+    box-shadow: 
+        /* Main hand shadow */
+        2px 4px 12px rgba(0,0,0,0.4),
+        /* Finger separations - vertical lines */
+        inset -4px 8px 2px -1px rgba(139, 97, 66, 0.3),
+        inset -8px 8px 2px -1px rgba(139, 97, 66, 0.3),
+        inset -12px 8px 2px -1px rgba(139, 97, 66, 0.3),
+        inset -16px 8px 2px -1px rgba(139, 97, 66, 0.3),
+        /* Thumb separation */
+        inset 3px 15px 4px -2px rgba(139, 97, 66, 0.4),
+        /* Highlight on knuckles */
+        inset 2px 28px 3px -2px rgba(255, 255, 255, 0.2);
+    clip-path: polygon(
+        40% 0%, 45% 2%, 50% 0%, 55% 2%, 60% 0%,  /* Fingertips pointed */
+        65% 5%, 70% 15%, 75% 25%,  /* Right side curve */
+        80% 35%, 85% 50%,  /* Palm right */
+        85% 65%, 82% 70%,  /* Bangles area */
+        50% 100%, 18% 70%,  /* Wrist and left bangles */
+        15% 65%, 15% 50%,  /* Palm left */
+        20% 35%, 25% 25%,  /* Left side curve */
+        30% 15%, 35% 5%  /* Back to fingertips */
+    );
+}
+
+/* Saree golden border pattern */
+.avatar-greeting {
+    position: relative;
+}
+
+.avatar-greeting::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 12px;
+    background: linear-gradient(90deg, 
+        #b8860b 0%, #ffd700 8%, #ffed4e 16%, #f4d03f 24%,
+        #ffd700 32%, #b8860b 40%, #daa520 48%,
+        #b8860b 56%, #ffd700 64%, #ffed4e 72%,
+        #f4d03f 80%, #ffd700 88%, #b8860b 100%);
+    top: -90px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    border-top: 2.5px solid rgba(139, 0, 0, 0.7);
+    border-bottom: 2.5px solid rgba(139, 0, 0, 0.7);
+    box-shadow: 0 3px 8px rgba(218, 165, 32, 0.6), inset 0 2px 3px rgba(255, 255, 255, 0.4);
+    z-index: 2;
+}
+
+/* Namaste hands from greeting disabled to avoid garbled text */
+.avatar-greeting::after {
+    content: '';
+}
+
+.avatar-smile::after {
+    content: '';
+}
+.avatar-body {
+    width: 100px;
+    height: 85px;
+    background: linear-gradient(140deg, 
+        #dc143c 0%, #c41230 25%, #b91027 35%, 
+        #8b0000 48%, 
+        #ffd700 48%, #ffed4e 58%, #f4d03f 68%, #daa520 100%);
+    border-radius: 50px 50px 8px 8px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35), inset 0 2px 4px rgba(255, 255, 255, 0.1);
+    z-index: 1;
+}
+
+/* (Removed emoji-based hands; hands are drawn via .avatar-hands above) */
+
+.avatar-greeting {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: white;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 1s ease;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes blink {
+    0%, 90%, 100% {
+        opacity: 1;
+    }
+    95% {
+        opacity: 0;
+    }
+}
+
+@keyframes smile {
+    0%, 100% {
+        width: 25px;
+    }
+    50% {
+        width: 30px;
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes wave {
+    0%, 100% {
+        transform: translateX(-50%) rotate(0deg);
+    }
+    25% {
+        transform: translateX(-50%) rotate(-5deg);
+    }
+    75% {
+        transform: translateX(-50%) rotate(5deg);
+    }
+}
+
+.auth-box {
+    background: white;
+    border-radius: 15px;
+    padding: 35px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    animation: fadeInUp 0.8s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.auth-box h2 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+}
+
+.auth-box .form-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.auth-box .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.auth-box .form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.auth-box .form-group input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.password-toggle {
+    position: absolute;
+    right: 15px;
+    top: 43px;
+    cursor: pointer;
+    color: #999;
+    transition: color 0.3s ease;
+}
+
+.password-toggle:hover {
+    color: #667eea;
+}
+
+.password-strength {
+    margin-top: 8px;
+}
+
+.strength-bar {
+    height: 4px;
+    background: #e0e0e0;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    width: 0;
+}
+
+.strength-text {
+    display: block;
+    font-size: 0.85rem;
+    margin-top: 5px;
+    font-weight: 600;
+}
+
+.btn-auth {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.btn-auth:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.btn-auth:active {
+    transform: translateY(0);
+}
+
+.auth-links {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.auth-links a {
+    color: #667eea;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.auth-links a:hover {
+    color: #764ba2;
+    text-decoration: underline;
+}
+
+/* Header Avatar */
+.header-avatar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 15px;
+    background: rgba(102, 126, 234, 0.1);
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.header-avatar:hover {
+    background: rgba(102, 126, 234, 0.2);
+}
+
+.mini-avatar {
+    width: 35px;
+    height: 35px;
+    position: relative;
+}
+
+.mini-avatar-head {
+    width: 30px;
+    height: 30px;
+    background: #ffd1a0;
+    border-radius: 50%;
+    position: relative;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.mini-avatar-face {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.mini-avatar-eyes {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 3px;
+}
+
+.mini-avatar-eye {
+    width: 4px;
+    height: 4px;
+    background: #2c3e50;
+    border-radius: 50%;
+}
+
+.mini-avatar-smile {
+    width: 12px;
+    height: 6px;
+    border: 1px solid #2c3e50;
+    border-top: none;
+    border-radius: 0 0 12px 12px;
+    margin: 0 auto;
+}
+
+.user-name {
+    font-weight: 600;
+    color: #2c3e50;
+    font-size: 0.9rem;
+}
+
+/* Hidden utility class */
+.hidden {
+    display: none !important;
+}
+
+/* App Wrapper */
+.app-wrapper.hidden {
+    display: none;
+}
+
+.auth-page.hidden {
+    display: none;
+}
+
+/* Shake animation for error feedback */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-8px); }
+    20%, 40%, 60%, 80% { transform: translateX(8px); }
+}
+
+.shake {
+    animation: shake 0.5s ease-in-out;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .auth-container {
+        padding: 10px;
+    }
+
+    .auth-box {
+        padding: 25px 20px;
+    }
+
+    .auth-box h2 {
+        font-size: 1.5rem;
+    }
+
+    .avatar-character {
+        width: 100px;
+        height: 120px;
+    }
+
+    /* Scale and reposition hands for small screens */
+    .avatar-hands {
+        top: 58px;
+        width: 56px;
+        height: 50px;
+    }
+    .avatar-hands::before,
+    .avatar-hands::after {
+        width: 25px;
+        height: 40px;
+        top: 3px;
+    }
+
+    .auth-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .auth-links a {
+        text-align: center;
+    }
+}
