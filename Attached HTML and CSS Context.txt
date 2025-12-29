@@ -1,0 +1,265 @@
+Attached HTML and CSS Context
+
+<div class="auth-page" id="authPage">
+        <div class="auth-container">
+            <div class="auth-avatar">
+                <div class="avatar-character">
+                    <div class="avatar-head">
+                        <div class="avatar-hair"></div>
+                        <div class="avatar-face">
+                            <div class="avatar-eyes">
+                                <div class="avatar-eye left"></div>
+                                <div class="avatar-eye right"></div>
+                            </div>
+                            <div class="avatar-smile"></div>
+                        </div>
+                    </div>
+                    <!-- Namaste hands (pure CSS) -->
+                    <div class="avatar-hands"></div>
+                    <div class="avatar-body"></div>
+                </div>
+                <p class="avatar-greeting" id="avatarGreeting">Welcome back!</p>
+            </div>
+            <div class="auth-box hidden" id="loginBox">
+                <h2>Login to AGZ Expenses</h2>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="loginEmail">Email / User ID</label>
+                        <input type="text" id="loginEmail" placeholder="Enter your email" required="" autocomplete="username">
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <input type="text" id="loginPassword" placeholder="Enter your password" required="" autocomplete="current-password">
+                        <span class="password-toggle" onclick="Auth.togglePassword('loginPassword')">
+                            <i class="fas fa-eye-slash" id="loginPasswordToggle"></i>
+                        </span>
+                    </div>
+                    <button type="submit" class="btn-auth">Login</button>
+                </form>
+                <div class="auth-links">
+                    <a href="#" onclick="Auth.showRegister(); return false;">Create new account</a>
+                    <a href="#" onclick="Auth.showPasswordReset(); return false;">Forgot password?</a>
+                </div>
+            </div>
+            <div class="auth-box" id="registerBox">
+                <h2>Create Account</h2>
+                <form id="registerForm">
+                    <div class="form-group">
+                        <label for="registerName">Full Name</label>
+                        <input type="text" id="registerName" placeholder="Enter your full name" required="">
+                    </div>
+                    <div class="form-group">
+                        <label for="registerEmail">Email</label>
+                        <input type="email" id="registerEmail" placeholder="Enter your email" required="" autocomplete="username">
+                    </div>
+                    <div class="form-group">
+                        <label for="registerPassword">Password</label>
+                        <input type="password" id="registerPassword" placeholder="Create a strong password" required="" autocomplete="new-password">
+                        <span class="password-toggle" onclick="Auth.togglePassword('registerPassword')">
+                            <i class="fas fa-eye" id="registerPasswordToggle"></i>
+                        </span>
+                        <div class="password-strength" id="passwordStrength">
+                            <div class="strength-bar" style="width: 100%; background-color: rgb(39, 174, 96);"></div>
+                            <span class="strength-text" style="color: rgb(39, 174, 96);">Strong</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input type="password" id="confirmPassword" placeholder="Confirm your password" required="" autocomplete="new-password">
+                    </div>
+                    <button type="submit" class="btn-auth">Create Account</button>
+                </form>
+                <div class="auth-links">
+                    <a href="#" onclick="Auth.showLogin(); return false;">Already have an account? Login</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+/* Matched Rule from user-agent */
+div {
+  display: block;
+}
+
+/* Matched Rule from user-agent */
+address, blockquote, center, div, figure, figcaption, footer, form, header, hr, legend, listing, main, p, plaintext, pre, summary, xmp, article, aside, h1, h2, h3, h4, h5, h6, hgroup, nav, section, search, table, caption, colgroup, col, thead, tbody, tfoot, tr, td, th, dir, dd, dl, dt, menu, ol, ul, li, bdi, output, [dir="ltr" i], [dir="rtl" i], [dir="auto" i] {
+  unicode-bidi: isolate;
+}
+
+/* Matched Rule from regular */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  box-sizing: border-box;
+}
+
+/* Matched Rule from regular */
+.auth-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 20px;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(135deg, rgb(102, 126, 234) 0%, rgb(118, 75, 162) 100%);
+  background-position-x: initial;
+  background-position-y: initial;
+  background-size: initial;
+  background-repeat: initial;
+  background-attachment: initial;
+  background-origin: initial;
+  background-clip: initial;
+  background-color: initial;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding-top: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+}
+
+/* Inherited from ancestor level 1 (user-agent) */
+body {
+  display: block;
+  margin-top: 8px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  margin-left: 8px;
+}
+
+/* Inherited from ancestor level 1 (regular) */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  box-sizing: border-box;
+}
+
+/* Inherited from ancestor level 1 (regular) */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--light-color);
+  color: var(--dark-color);
+  display: flex;
+  min-height: 100vh;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--dark-color);
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Inherited from ancestor level 1 (regular) */
+body.tamil {
+  font-family: 'Latha', 'Vijaya', 'TSCu_Paranar', sans-serif;
+  font-family: Latha, Vijaya, TSCu_Paranar, sans-serif;
+}
+
+/* Inherited from ancestor level 2 (user-agent) */
+html {
+  display: block;
+}
+
+/* Inherited from ancestor level 2 (user-agent) */
+:root {
+  view-transition-name: root;
+}
+
+/* Inherited from ancestor level 2 (regular) */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  box-sizing: border-box;
+}
+
+/* Inherited from ancestor level 2 (regular) */
+:host, :root {
+  --fa-style-family-brands: "Font Awesome 6 Brands";
+  --fa-font-brands: normal 400 1em/1 "Font Awesome 6 Brands";
+  --fa-style-family-brands: "Font Awesome 6 Brands";
+  --fa-font-brands: normal 400 1em/1 "Font Awesome 6 Brands";
+}
+
+/* Inherited from ancestor level 2 (regular) */
+:host, :root {
+  --fa-font-regular: normal 400 1em/1 "Font Awesome 6 Free";
+  --fa-font-regular: normal 400 1em/1 "Font Awesome 6 Free";
+}
+
+/* Inherited from ancestor level 2 (regular) */
+:host, :root {
+  --fa-style-family-classic: "Font Awesome 6 Free";
+  --fa-font-solid: normal 900 1em/1 "Font Awesome 6 Free";
+  --fa-style-family-classic: "Font Awesome 6 Free";
+  --fa-font-solid: normal 900 1em/1 "Font Awesome 6 Free";
+}
+
+/* Inherited from ancestor level 2 (regular) */
+:root {
+  --primary-color: #667eea;
+  --primary-dark: #5568d3;
+  --secondary-color: #50c878;
+  --danger-color: #e74c3c;
+  --warning-color: #f39c12;
+  --dark-color: #2c3e50;
+  --light-color: #f8f9fa;
+  --white: #ffffff;
+  --sidebar-bg: #667eea;
+  --sidebar-hover: #5568d3;
+  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --card-shadow-hover: 0 8px 15px rgba(0, 0, 0, 0.15);
+  --border-radius: 12px;
+  --transition: all 0.3s ease;
+  --primary-color: #667eea;
+  --primary-dark: #5568d3;
+  --secondary-color: #50c878;
+  --danger-color: #e74c3c;
+  --warning-color: #f39c12;
+  --dark-color: #2c3e50;
+  --light-color: #f8f9fa;
+  --white: #ffffff;
+  --sidebar-bg: #667eea;
+  --sidebar-hover: #5568d3;
+  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --card-shadow-hover: 0 8px 15px rgba(0, 0, 0, 0.15);
+  --border-radius: 12px;
+  --transition: all 0.3s ease;
+}
