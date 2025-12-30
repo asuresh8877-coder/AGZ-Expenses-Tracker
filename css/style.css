@@ -1532,6 +1532,11 @@ body.tamil {
     box-shadow: var(--card-shadow-hover);
 }
 
+.notification.warning,
+.notification.warning * {
+    color: #ff3b30 !important;
+}
+
 .notification.show {
     display: block;
 }
@@ -1546,6 +1551,25 @@ body.tamil {
 
 .notification.info {
     background: var(--primary-color);
+}
+
+.notification.warning {
+    background: #ffffff;
+}
+
+.notification.danger {
+    background: var(--danger-color);
+}
+
+.notification.warning::before {
+    content: '▲';
+    color: #ff3b30; /* red triangle */
+    margin-right: 8px;
+    font-weight: 900;
+    font-size: 1.15em;
+    line-height: 1;
+    display: inline-block;
+    transform: translateY(-1px);
 }
 
 /* Animations */

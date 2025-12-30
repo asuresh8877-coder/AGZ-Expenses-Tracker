@@ -416,3 +416,16 @@
         padding: 12px;
     }
 }
+
+/* Mobile: compact header chips (icons only) */
+@media (max-width: 600px) {
+    .action-chip .chip-label,
+    .action-chip .chip-hint {
+        display: none;
+    }
+
+    .action-chip {
+        padding: 10px 12px;
+        gap: 6px;
+    }
+}

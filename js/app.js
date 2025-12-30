@@ -7,6 +7,8 @@ const App = {
     selectedMonth: new Date().getMonth(),
     selectedYear: new Date().getFullYear(),
     selectedCategory: '',
+    audioContext: null,
+    audioReady: false,
 
     // Initialize application
     init() {
@@ -14,6 +16,7 @@ const App = {
         DataManager.init();
         
         this.setupEventListeners();
+        this.setupAudioUnlock();
         this.loadDashboard();
         this.renderCategories();
         this.setupDateDefaults();
@@ -27,6 +30,24 @@ const App = {
         if (budgetInput && budget > 0) {
             budgetInput.value = budget;
         }
+    },
+
+    setupAudioUnlock() {
+        const unlock = () => {
+            try {
+                const Ctx = window.AudioContext || window.webkitAudioContext;
+                if (!Ctx) return;
+                this.audioContext = this.audioContext || new Ctx();
+                if (this.audioContext.state === 'suspended') {
+                    this.audioContext.resume();
+                }
+                this.audioReady = true;
+                document.removeEventListener('pointerdown', unlock);
+                document.removeEventListener('touchstart', unlock);
+            } catch (_) {}
+        };
+        document.addEventListener('pointerdown', unlock, { once: true });
+        document.addEventListener('touchstart', unlock, { once: true });
     },
 
     // Setup all event listeners
@@ -224,8 +245,8 @@ const App = {
         const ALERT_THRESHOLD = 1000;
         
         if (remaining <= ALERT_THRESHOLD && remaining >= 0) {
-            // Show warning notification
-            const message = `⚠️ Warning: Remaining balance is below ₹${ALERT_THRESHOLD}. Current balance: ₹${remaining.toFixed(2)}`;
+            // Show warning notification (triangle icon handled via CSS)
+            const message = `Warning: Remaining balance is below ₹${ALERT_THRESHOLD}. Current balance: ₹${remaining.toFixed(2)}`;
             this.showNotification(message, 'warning');
             
             // Play notification sound
@@ -240,26 +261,31 @@ const App = {
 
     // Play alert sound
     playAlertSound() {
-        // Create a simple beep sound using Web Audio API
         try {
-            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            if (!this.audioReady) {
+                this.showNotification('🔊 Tap anywhere once to enable sound', 'info');
+                return;
+            }
+            const Ctx = window.AudioContext || window.webkitAudioContext;
+            if (!Ctx) return;
+            this.audioContext = this.audioContext || new Ctx();
+            const audioContext = this.audioContext;
             const oscillator = audioContext.createOscillator();
             const gainNode = audioContext.createGain();
-            
+
             oscillator.connect(gainNode);
             gainNode.connect(audioContext.destination);
-            
+
             oscillator.frequency.value = 800;
             oscillator.type = 'sine';
-            
-            gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
-            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
-            
+
+            gainNode.gain.setValueAtTime(0.0001, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.08, audioContext.currentTime + 0.02);
+            gainNode.gain.exponentialRampToValueAtTime(0.0001, audioContext.currentTime + 0.28);
+
             oscillator.start(audioContext.currentTime);
-            oscillator.stop(audioContext.currentTime + 0.5);
-        } catch (e) {
-            console.log('Audio context not available');
-        }
+            oscillator.stop(audioContext.currentTime + 0.3);
+        } catch (_) {}
     },
 
     // Render categories grid
@@ -1451,6 +1477,13 @@ const App = {
         notification.textContent = message;
         notification.className = `notification ${type} show`;
         
+        // Force red text color for warning notifications
+        if (type === 'warning') {
+            notification.style.color = '#ff3b30';
+        } else {
+            notification.style.color = '';
+        }
+        
         setTimeout(() => {
             notification.classList.remove('show');
         }, 3000);
@@ -1460,6 +1493,11 @@ const App = {
 // Initialize app when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     App.init();
+    
+    // Initialize responsive features for mobile
+    if (typeof ResponsiveManager !== 'undefined') {
+        ResponsiveManager.init();
+    }
     
     // Apply language translations after everything is loaded
     setTimeout(() => {

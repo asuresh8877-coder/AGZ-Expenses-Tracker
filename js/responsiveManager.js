@@ -83,12 +83,15 @@ const ResponsiveManager = {
      */
     setupMobileNavigation() {
         const bottomNavItems = document.querySelectorAll('.bottom-nav-item');
-        const sidebarItems = document.querySelectorAll('.nav-item');
+        // Only use sidebar items that have a data-page attribute
+        const sidebarItems = Array.from(document.querySelectorAll('.nav-item'))
+            .filter(item => item.getAttribute('data-page'));
 
         bottomNavItems.forEach(item => {
             item.addEventListener('click', (e) => {
                 e.preventDefault();
                 const page = item.getAttribute('data-page');
+                if (!page) return;
                 this.navigateTo(page);
                 this.updateActiveNav(item, sidebarItems, bottomNavItems);
                 this.closeSidebar();
@@ -99,10 +102,34 @@ const ResponsiveManager = {
             item.addEventListener('click', (e) => {
                 e.preventDefault();
                 const page = item.getAttribute('data-page');
+                if (!page) return;
                 this.navigateTo(page);
                 this.updateActiveNav(item, sidebarItems, bottomNavItems);
             });
         });
+
+        // Handle reminder/settings (no data-page) for mobile taps
+        const reminderItem = document.getElementById('reminderNavItem');
+        if (reminderItem) {
+            reminderItem.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (typeof App !== 'undefined' && App.openReminders) {
+                    App.openReminders();
+                }
+                this.closeSidebar();
+            });
+        }
+
+        const settingsItem = document.getElementById('settingsNavItem');
+        if (settingsItem) {
+            settingsItem.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (typeof App !== 'undefined' && App.openSettings) {
+                    App.openSettings();
+                }
+                this.closeSidebar();
+            });
+        }
     },
 
     /**

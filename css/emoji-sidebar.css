@@ -1,10 +1,14 @@
 /* Emoji Sidebar Styles */
 
 .logo-emoji {
-    font-size: 2.5rem;
+    font-size: 2.7rem;
     display: inline-block;
-    animation: float 3s ease-in-out infinite, spin 4s linear infinite;
-    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.4));
+    font-weight: 800;
+    color: #d4af37 !important; /* gold */
+    text-shadow: 0 0 6px rgba(212, 175, 55, 0.55), 0 0 12px rgba(212, 175, 55, 0.35);
+    animation: float 3s ease-in-out infinite, spin 5s linear infinite;
+    filter: none;
+    mix-blend-mode: normal;
 }
 
 .nav-emoji {
