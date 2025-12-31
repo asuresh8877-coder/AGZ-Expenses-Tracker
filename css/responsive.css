@@ -242,8 +242,8 @@
         width: 100%;
         display: grid;
         grid-template-columns: repeat(6, 1fr);
-        column-gap: 1px;
-        row-gap: 1px;
+        column-gap: 2px;
+        row-gap: 2px;
         align-items: center;
         justify-items: center;
         padding: 0 4px;
@@ -349,9 +349,9 @@
         width: 44px !important;
         height: 44px !important;
         border-radius: 50% !important;
-        background: #f0f4ff;
-        border: 1px solid #e0e7ff;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
@@ -361,11 +361,11 @@
     .header-avatar .header-btn {
         width: 44px !important;
         height: 44px !important;
-        background: #f0f4ff;
-        border: 1px solid #e0e7ff;
+        background: transparent !important;
+        border: none !important;
         border-radius: 50% !important;
         font-size: 0.95rem;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        box-shadow: none !important;
         display: flex !important;
     }
         font-size: 0.95rem;
