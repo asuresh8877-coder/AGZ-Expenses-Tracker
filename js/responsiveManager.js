@@ -91,9 +91,15 @@ const ResponsiveManager = {
             item.addEventListener('click', (e) => {
                 e.preventDefault();
                 const page = item.getAttribute('data-page');
-                if (!page) return;
-                this.navigateTo(page);
-                this.updateActiveNav(item, sidebarItems, bottomNavItems);
+                const action = item.getAttribute('data-action');
+
+                if (page) {
+                    this.navigateTo(page);
+                    this.updateActiveNav(item, sidebarItems, bottomNavItems);
+                } else if (action) {
+                    this.handleAction(action);
+                    this.updateActiveNav(item, sidebarItems, bottomNavItems, true);
+                }
                 this.closeSidebar();
             });
         });
@@ -113,9 +119,7 @@ const ResponsiveManager = {
         if (reminderItem) {
             reminderItem.addEventListener('click', (e) => {
                 e.preventDefault();
-                if (typeof App !== 'undefined' && App.openReminders) {
-                    App.openReminders();
-                }
+                this.handleAction('reminders');
                 this.closeSidebar();
             });
         }
@@ -124,9 +128,7 @@ const ResponsiveManager = {
         if (settingsItem) {
             settingsItem.addEventListener('click', (e) => {
                 e.preventDefault();
-                if (typeof App !== 'undefined' && App.openSettings) {
-                    App.openSettings();
-                }
+                this.handleAction('settings');
                 this.closeSidebar();
             });
         }
@@ -136,20 +138,43 @@ const ResponsiveManager = {
      * Navigate to page
      */
     navigateTo(page) {
-        if (typeof App !== 'undefined' && App.showPage) {
+        if (typeof App === 'undefined') return;
+
+        if (typeof App.switchPage === 'function') {
+            App.switchPage(page);
+        } else if (typeof App.showPage === 'function') {
             App.showPage(page);
+        }
+    },
+
+    /**
+     * Handle non-page actions (reminders/settings)
+     */
+    handleAction(action) {
+        if (typeof App === 'undefined') return;
+
+        if (action === 'reminders' && typeof App.openReminders === 'function') {
+            App.openReminders();
+        }
+
+        if (action === 'settings' && typeof App.openSettings === 'function') {
+            App.openSettings();
         }
     },
 
     /**
      * Update active navigation item
      */
-    updateActiveNav(activeItem, sidebarItems, bottomItems) {
+    updateActiveNav(activeItem, sidebarItems, bottomItems, skipSidebarSync = false) {
         sidebarItems.forEach(item => item.classList.remove('active'));
         bottomItems.forEach(item => item.classList.remove('active'));
         activeItem.classList.add('active');
 
+        if (skipSidebarSync) return;
+
         const page = activeItem.getAttribute('data-page');
+        if (!page) return;
+
         const correspondingItem = document.querySelector(`[data-page="${page}"]`);
         if (correspondingItem) {
             correspondingItem.classList.add('active');
