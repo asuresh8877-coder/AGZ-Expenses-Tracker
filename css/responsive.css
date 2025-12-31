@@ -241,17 +241,18 @@
         grid-area: actions;
         width: 100%;
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
-        column-gap: 8px;
-        row-gap: 8px;
+        grid-template-columns: repeat(5, minmax(44px, 1fr));
+        column-gap: 1px;
+        row-gap: 6px;
         align-items: center;
         justify-items: center;
     }
 
     .header-btn {
-        width: 42px;
-        height: 42px;
+        width: 44px;
+        height: 44px;
         font-size: 1rem;
+        padding: 0;
     }
 
     .header-actions {
@@ -268,16 +269,16 @@
         background: transparent;
         border: none;
         box-shadow: none;
-        width: 46px;
-        height: 46px;
+        width: 44px;
+        height: 44px;
         justify-content: center;
         align-items: center;
         flex-shrink: 0;
     }
 
     .action-chip .chip-icon {
-        width: 42px;
-        height: 42px;
+        width: 40px;
+        height: 40px;
         font-size: 1rem;
         border-radius: 50%;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -312,8 +313,8 @@
     }
 
     .header-avatar .mini-avatar {
-        width: 38px;
-        height: 38px;
+        width: 44px;
+        height: 44px;
         border-radius: 50%;
         background: #f0f4ff;
         border: 1px solid #e0e7ff;
@@ -321,15 +322,14 @@
     }
 
     .header-avatar .header-btn {
-        width: 38px;
-        height: 38px;
+        width: 44px;
+        height: 44px;
         background: #f0f4ff;
         border: 1px solid #e0e7ff;
         border-radius: 50%;
         font-size: 0.95rem;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    }
-        font-size: 0.95rem;
+        padding: 0;
     }
 
     .chip-hint {
