@@ -240,12 +240,10 @@
     .header-right {
         grid-area: actions;
         width: 100%;
-        display: grid;
-        grid-template-columns: repeat(5, minmax(44px, 1fr));
-        column-gap: 1px;
-        row-gap: 6px;
+        display: flex;
+        gap: 4px;
         align-items: center;
-        justify-items: center;
+        justify-content: flex-start;
     }
 
     .header-btn {
@@ -253,12 +251,16 @@
         height: 44px;
         font-size: 1rem;
         padding: 0;
+        flex-shrink: 0;
     }
 
     .header-actions {
-        width: 100%;
+        width: auto;
         min-width: 0;
-        display: contents;
+        display: flex;
+        gap: 2px;
+        align-items: center;
+        flex-shrink: 0;
     }
 
     .action-chip {
@@ -274,6 +276,7 @@
         justify-content: center;
         align-items: center;
         flex-shrink: 0;
+        margin: 0;
     }
 
     .action-chip .chip-icon {
@@ -282,6 +285,9 @@
         font-size: 1rem;
         border-radius: 50%;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .action-chip .chip-copy {
@@ -309,7 +315,11 @@
     }
 
     .header-avatar {
-        display: contents;
+        display: flex;
+        gap: 4px;
+        align-items: center;
+        margin-left: auto;
+        flex-shrink: 0;
     }
 
     .header-avatar .mini-avatar {
