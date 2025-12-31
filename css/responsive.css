@@ -279,12 +279,29 @@
         width: 44px;
         height: 44px;
         font-size: 1rem;
-        border-radius: 50%;
+        border-radius: 50% !important;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .add-expense .chip-icon {
+        background: linear-gradient(135deg, #4a90e2 0%, #6f7bee 100%);
+    }
+
+    .reminder .chip-icon {
+        background: linear-gradient(135deg, #ffb347 0%, #ff6f61 100%);
+    }
+
+    .language .chip-icon {
+        background: linear-gradient(135deg, #34c8a1 0%, #2f9b86 100%);
     }
 
     .action-chip .chip-copy {
         display: none;
+    }
+
+    .language {
+        display: flex !important;
+        visibility: visible !important;
     }
 
     .user-name {
