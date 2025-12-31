@@ -215,10 +215,12 @@
     }
 
     .top-header {
-        display: flex;
+        display: grid;
+        grid-template-areas:
+            "title"
+            "actions";
         align-items: center;
-        justify-content: space-between;
-        gap: 12px;
+        gap: 10px;
         padding: 15px 20px;
     }
 
@@ -226,7 +228,12 @@
         font-size: 1.2rem;
     }
 
+    .header-left {
+        grid-area: title;
+    }
+
     .header-right {
+        grid-area: actions;
         gap: 8px;
         width: 100%;
         display: grid;
@@ -324,6 +331,7 @@
     .action-btn {
         width: 100%;
         justify-content: center;
+        font-size: 0.95rem;
     }
 
     .quick-actions-inline {
