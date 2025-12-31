@@ -241,11 +241,12 @@
         grid-area: actions;
         width: 100%;
         display: grid;
-        grid-template-columns: repeat(5, minmax(0, 1fr));
-        column-gap: 1px;
-        row-gap: 1px;
+        grid-template-columns: repeat(5, 1fr);
+        column-gap: 6px;
+        row-gap: 6px;
         align-items: center;
         justify-items: center;
+        padding: 0 4px;
     }
 
     .header-btn {
@@ -345,13 +346,7 @@
     }
 
     .header-avatar .mini-avatar {
-        width: 44px;
-        height: 44px;
-        border-radius: 50% !important;
-        background: #f0f4ff;
-        border: 1px solid #e0e7ff;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-        display: flex !important;
+        display: none !important;
     }
 
     .header-avatar .header-btn {
