@@ -261,47 +261,63 @@
     }
 
     .action-chip {
-        padding: 0;
-        min-height: auto;
-        gap: 0;
-        border-radius: 50%;
-        background: transparent;
-        border: none;
-        box-shadow: none;
-        width: 44px;
-        height: 44px;
-        justify-content: center;
-        align-items: center;
-        flex-shrink: 0;
+        padding: 0 !important;
+        min-height: auto !important;
+        gap: 0 !important;
+        border-radius: 50% !important;
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        width: 44px !important;
+        height: 44px !important;
+        justify-content: center !important;
+        align-items: center !important;
+        flex-shrink: 0 !important;
+        display: flex !important;
+    }
+
+    .action-chip.add-expense,
+    .action-chip.reminder,
+    .action-chip.language {
+        display: flex !important;
+        width: 44px !important;
+        height: 44px !important;
+        padding: 0 !important;
     }
 
     .action-chip .chip-icon {
-        width: 44px;
-        height: 44px;
-        font-size: 1rem;
+        width: 44px !important;
+        height: 44px !important;
+        font-size: 1rem !important;
         border-radius: 50% !important;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
     }
 
     .add-expense .chip-icon {
-        background: linear-gradient(135deg, #4a90e2 0%, #6f7bee 100%);
+        background: linear-gradient(135deg, #4a90e2 0%, #6f7bee 100%) !important;
     }
 
     .reminder .chip-icon {
-        background: linear-gradient(135deg, #ffb347 0%, #ff6f61 100%);
+        background: linear-gradient(135deg, #ffb347 0%, #ff6f61 100%) !important;
     }
 
     .language .chip-icon {
-        background: linear-gradient(135deg, #34c8a1 0%, #2f9b86 100%);
+        background: linear-gradient(135deg, #34c8a1 0%, #2f9b86 100%) !important;
     }
 
     .action-chip .chip-copy {
-        display: none;
+        display: none !important;
     }
 
     .language {
         display: flex !important;
         visibility: visible !important;
+        width: 44px !important;
+        height: 44px !important;
+        padding: 0 !important;
     }
 
     .user-name {
@@ -331,20 +347,22 @@
     .header-avatar .mini-avatar {
         width: 44px;
         height: 44px;
-        border-radius: 50%;
+        border-radius: 50% !important;
         background: #f0f4ff;
         border: 1px solid #e0e7ff;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        display: flex !important;
     }
 
     .header-avatar .header-btn {
-        width: 44px;
-        height: 44px;
+        width: 44px !important;
+        height: 44px !important;
         background: #f0f4ff;
         border: 1px solid #e0e7ff;
-        border-radius: 50%;
+        border-radius: 50% !important;
         font-size: 0.95rem;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        display: flex !important;
     }
         font-size: 0.95rem;
     }
